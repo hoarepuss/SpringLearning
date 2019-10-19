@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="normalBeanFactory" class="com.itheima.service.factory.NormalBeanFactory"></bean>
+    <bean id="accountService2" factory-bean="normalBeanFactory" factory-method="getAccountService"></bean>
+    <bean id="accountService3" class="com.itheima.service.factory.StaticBeanFactory" factory-method="getAccountService"></bean>
+
+    <bean id="accountService" class="com.itheima.service.impl.AccountServiceImpl" scope="prototype"></bean>
+</beans>

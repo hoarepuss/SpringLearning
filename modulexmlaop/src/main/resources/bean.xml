@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd">
+    <bean id="accountService" class="com.itheima.service.impl.AccountServiceImpl"></bean>
+
+    <!--基于XML的AOP配置步骤·-->
+    <!--配置通知类-->
+    <bean id="loggerAdvice" class="com.itheima.utils.LoggerAdvice"></bean>
+    <!--开始配置-->
+    <aop:config>
+        <aop:pointcut id="saveAccount" expression="execution(public void com.itheima.service.impl.AccountServiceImpl.saveAccount())"/>
+        <aop:aspect id="logAdvice" ref="loggerAdvice">
+           <!-- <aop:before method="beforeLogger" pointcut-ref="saveAccount"></aop:before>
+            <aop:after-returning method="afterLogger" pointcut-ref="saveAccount"></aop:after-returning>
+            <aop:after method="finallyLogger" pointcut-ref="saveAccount"></aop:after>
+            <aop:after-throwing method="exceptionLogger" pointcut-ref="saveAccount"></aop:after-throwing>-->
+           <!-- <aop:pointcut id="saveAccount" expression="execution(public void com.itheima.service.impl.AccountServiceImpl.saveAccount())"/>-->
+            <aop:around method="aroundLogger" pointcut-ref="saveAccount"></aop:around>
+        </aop:aspect>
+    </aop:config>
+</beans>

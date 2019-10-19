@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="accountService" class="com.itheima.service.impl.AccountServiceImpl" scope="prototype">
+        <constructor-arg name="name" value="李斯"></constructor-arg>
+        <constructor-arg name="age" value="18"></constructor-arg>
+        <constructor-arg name="date" ref="getDate"></constructor-arg>
+    </bean>
+    <bean id="accountService2" class="com.itheima.service.impl.AccountServiceImpl2" scope="prototype">
+        <property name="name" value="耐克"></property>
+        <property name="age" value="19"></property>
+        <property name="date" ref="getDate"></property>
+    </bean>
+    <bean id="accountService3" class="com.itheima.service.impl.AccountServiceImpl3" scope="prototype">
+        <property name="myStr">
+            <array>
+                <value>a</value>
+                <value>b</value>
+                <value>c</value>
+            </array>
+        </property>
+        <property name="myList">
+            <list>
+                <value>d</value>
+                <value>e</value>
+                <value>f</value>
+            </list>
+        </property>
+        <property name="mySet">
+            <set>
+                <value>G</value>
+                <value>H</value>
+                <value>K</value>
+            </set>
+        </property>
+        <property name="myMap">
+            <map>
+                <entry key="1001" value="A1001"></entry>
+                <entry key="1002" value="A1002"></entry>
+                <entry key="1003" value="A1003"></entry>
+            </map>
+        </property>
+    </bean>
+    <bean id="getDate" class="java.util.Date"></bean>
+</beans>
